@@ -1,0 +1,47 @@
+// app global css in SCSS form
+
+.w-100 {
+    width: 100%;
+}
+
+.bg-menubar-custom {
+    background: #050824;
+}
+
+.font-white {
+    color: white;
+}
+
+.menubar-list-custom:hover {
+    background: linear-gradient(90deg, #4EFDEA 6.67%, #5766FF 92.08%);
+}
+
+.mt-120 {
+    margin-top: 140px;
+}
+
+.avatar-customs {
+    position: fixed;
+    width: 200px;
+    height: 70px;
+    bottom: 50px;
+    left: 20px;
+    background: rgba(75, 78, 104, 0.3) !important;
+    color: white;
+    border-radius: 16px;
+    height: 20px;
+}
+.avatar-name{
+  margin-left: 13px;
+}
+.bg-cyan{
+  background: rgba(75, 78, 104, 0.3) !important;
+}
+.avatar-custom-size {
+    height: 25px;
+    width: 25px;
+}
+
+.q-table__container {
+  box-shadow: none;
+}
