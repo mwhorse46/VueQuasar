@@ -16,15 +16,13 @@
                 </q-card-section>
                 <q-card-section class="q-pt-none">
                   Limit
-                  <div class="rows">
-                    <q-input filled v-model="text" class="limit-in" label="Filled" />
-                    <q-select class="limit-sel" filled v-model="model" :options="modaloptions" label="Filled" />
-                  </div>
+                  <div class="rows"><q-input filled v-model="text" class="limit-in" label="Filled" /><q-select class="limit-sel" filled v-model="model" :options="modaloptions" label="Filled" /></div>
               </q-card-section>
               </div>
               <div v-else-if="nexton==2">
                 <q-card-section class="q-pt-none">
                   Type
+                  <!-- <q-input filled v-model="text" label="Filled" class="doneinput"/> -->
                   <q-select class="doneinput" filled v-model="model" :options="modaloptions" label="Filled" />
                 </q-card-section>
                 <q-card-section class="q-pt-none">
@@ -37,10 +35,12 @@
                 </q-card-section>
                 <q-card-section class="q-pt-none">
                   Currency
+                  <!-- <q-input filled v-model="text" label="Filled" class="doneinput"/> -->
                   <q-select class="doneinput" filled v-model="model" :options="modaloptions" label="Filled" />
                 </q-card-section>
               </div>
             </div>
+
             <q-card-actions align="right" v-if="nexton==1">
               <q-btn label="Next"  @click="secondDialog" class="card-next"/>
             </q-card-actions>
@@ -53,18 +53,26 @@
     </q-dialog>
     <div class="row justify-between" style="border-bottom: solid 1px #F3F3F5;">
       <div  class="searchpage">
-        <input type="search" class="search" placeholder="Search" >
-        <q-icon name="search" class="search-icon" />
+        <input type="search" class="search" placeholder="Search" style="border:none;padding-left: 20px;">
+        <q-icon name="search" style="position: relative; right: 50px;"/>
       </div>
       <div class="row">
         <q-btn round no-outline icon="mdi-bell-outline" class="bell-notification" >
           <q-badge floating color="#4EFDEA" rounded style="position: absolute;right: 13px;top:16px">4</q-badge>
         </q-btn>
         <select  class="brand">
-          <option class="interbrand">Brand Shop</option>
-          <option>Facebook</option>
-          <option>Twitter</option>
-          <option>Oracle</option>
+          <option>
+            Brand Shop
+          </option>
+          <option>
+            Facebook
+          </option>
+          <option>
+            Twitter
+          </option>
+          <option>
+            Oracle
+          </option>
         </select>
       </div>
     </div>
@@ -77,7 +85,7 @@
           <div class="mytext"><div class="sumup-text-up">Release estimate <p class="sumup-text-down">March 4, 2023</p></div></div>
         </div>
         <div>
-          <q-btn  @click="inception=true" icon="add_circle_outline" label="Add"  class="addmidsify"/>
+          <q-btn color="blue" @click="inception=true" icon="add_circle_outline" label="Add"  class="addmidsify"/>
         </div>
       </div>
       <div class="row">
@@ -90,7 +98,7 @@
         >
           <template v-slot:body="props">
             <q-tr :props="props" class="tr-pro">
-              <q-td key="name" align="center" :props="props" style="width:20%;padding-left: 2%;">
+              <q-td key="name" align="center" :props="props" style="width:20%">
                 <div class="highlight">{{ props.row.name }}</div>
               </q-td>
               <q-td key="progress" :props="props" style="width:50%;padding-left: 25px;" >
@@ -98,7 +106,7 @@
                     <div class="tooltip">
                       <q-linear-progress size="25px" :value= props.row.progress  color="blue" class="progress">
                         <div class="absolute-full flex flex-center">
-                          <q-badge style="height: 200%; font-style: normal;font-weight: 500;font-size: 14px;line-height: 24px; position:absolute; left:52%;" class="badge-bg" :style="{marginLeft:props.row.progress*100-55+'%'}" color="white" text-color="#000034" :label="progressLabel1"/>
+                          <q-badge style="height: 200%;  position:absolute; left:52%;" class="badge-bg" :style="{marginLeft:props.row.progress*100-55+'%'}" color="white" text-color="accent" :label="progressLabel1"/>
                         </div>
                       </q-linear-progress>
                       <p class="tooltiptext"  :style="{marginLeft:props.row.progress*50-15+'%'}">{{props.row.uptext}}<br><span class="downspan">{{props.row.downtext}}</span></p>
@@ -108,10 +116,7 @@
                     <div class="tooltip">
                       <q-linear-progress  size="25px" :value= props.row.progress  color="#4EFDEA" class="progress1">
                         <div class="absolute-full flex flex-center">
-                          <q-badge style="height: 200%; font-style: normal;
-font-weight: 500;
-font-size: 14px;
-line-height: 24px; position:absolute; left:52%" :style="{marginLeft:props.row.progress*100-55+'%'}" color="white" text-color="#000034" :label="progressLabel1"/>
+                          <q-badge style="height: 200%;  position:absolute; left:52%" :style="{marginLeft:props.row.progress*100-55+'%'}" color="white" text-color="accent" :label="progressLabel1"/>
                         </div>
                       </q-linear-progress>
                       <p class="tooltiptext"  :style="{marginLeft:props.row.progress*50-15+'%'}">{{props.row.uptext}}<br><span class="downspan">{{props.row.downtext}}</span></p>
@@ -122,18 +127,18 @@ line-height: 24px; position:absolute; left:52%" :style="{marginLeft:props.row.pr
                   {{ props.row.details }}
                 </div>
               </q-td>
-              <q-td key="reserve" :props="props" class="reserve" style="width:20%;padding-left: 25px;font-size: 18px;">
+              <q-td key="reserve" :props="props" class="reserve" style="width:20%;padding-left: 25px;">
                 {{ props.row.reserve }}
               </q-td>
               <q-td key="status" :props="props">
                 <div v-if="props.row.status==1">
                   <div class="Live" >
-                    <i class="q-icon notranslate material-icons Liveicon" aria-hidden="true" role="presentation" style="font-size: 5px;color:red">circle-small</i><span class="statusfont">Live</span>
+                    <i class="q-icon notranslate material-icons Liveicon" aria-hidden="true" role="presentation" style="font-size: 5px;color:red">circle-small</i>Live
                   </div>
                 </div>
                 <div v-if="props.row.status==2">
                   <div class="Next" >
-                    <i class="q-icon notranslate material-icons Liveicon" aria-hidden="true" role="presentation" style="font-size: 5px;color:blue">circle-small</i><span class="statusfont">Next</span>
+                    <i class="q-icon notranslate material-icons Liveicon" aria-hidden="true" role="presentation" style="font-size: 5px;color:blue">circle-small</i>Next
                   </div>
                 </div>
               </q-td>
@@ -191,6 +196,7 @@ const rows = [
 ]
 
 export default {
+  name: 'MidisifyPage',
 
   setup () {
     const progress1 = ref(0.1)
@@ -228,16 +234,16 @@ export default {
 
 </script>
 <style>
+
 .progress{
   width:100%;
-  height: 35px;
   border-radius: 4px;
   color:#4EFDEA;
   background: #d5d7f0;
+
 }
 .progress1{
   width:100%;
-  height: 35px;
   border-radius: 4px;
   color:#4EFDEA;
   background: #e2f5f3;
@@ -247,13 +253,6 @@ export default {
   font-weight: 500;
   font-size: 16px;
   line-height: 26px;
-  color: #000034;
-}
-.interbrand{
-  font-style: normal;
-  font-weight: 500;
-  font-size: 14px;
-  line-height: 24px;
   color: #000034;
 }
 .card-add{
@@ -334,12 +333,6 @@ export default {
 .page-content{
   width: 95%;
 }
-.search-icon{
-  position: relative;
-  font-size:30px;
-  color:#84849A;
-  right: 50px;
-}
 .downspan{
   font-style: normal;
 font-weight: 600;
@@ -414,22 +407,21 @@ color: #4B4E68;
   height: 80%;
 }
 .page-name{
-  line-height: 40px;
-  margin-right: 0px;
+  font-family: 'Poppins';
   font-style: normal;
   font-weight: 600;
   font-size: 30px;
   line-height: 40px;
   color: #000034;
+  margin-right: 0px;
 }
 .brand{
   border-radius: 5px;
   height: 40px;
   width: 130px;
-  /* opacity: 0.5; */
-  border: 1px solid #e4e4ec;
+  border-color: #F5F5F5;
   padding-left: 10px;
-  margin-top: 23px;
+  margin-top: 10px;
   margin-right: 0px;
 }
 .q-badge{
@@ -481,17 +473,11 @@ color: #4B4E68;
 .q-btn:before{
   box-shadow:none;
 }
-.text-blue {
-    color:#7782F1!important;
-}
 .addmidsify{
   margin-top: 50px;
   margin-right: 0px;
   width: 100px;
   border-radius: 10px;
-  background:#006BF1;
-  color:white;
-;
 }
 .modal-icon{
   position: relative;
@@ -516,13 +502,9 @@ color: #4B4E68;
 .search{
   background-color: #F3F3F5;
   margin: 20px 0px 20px;
-  width: 500px;
+  width: 362px;
   height: 48px;
-  border-radius: 10px;
-  border:none;
-  padding-left: 20px;
-  background: #EFF0F2;
-  opacity: 0.78;
+  border-radius: 5px;
 }
 .cursor-pointer{
   height: 30px;
@@ -531,15 +513,8 @@ color: #4B4E68;
   color:blue !important;
   font-size: large;
 }
-.q-btn .q-btn-item .non-selectable .no-outline .q-btn--push .q-btn--rectangle .bg-cyan .text-white .q-btn--actionable .q-focusable .q-hoverable .q-btn-dropdown__arrow-container .q-anchor--skip{
-  border-left:none !important;
-}
-.q-btn-group{
-  background:none !important;
-  height: 50px;
-}
 .q-table .sortable{
-  font-size: 18px;
+  font-size: 20px;
   padding-left: 25px;
 }
 .tooltip .tooltiptext {
@@ -588,10 +563,7 @@ color: #4B4E68;
   box-shadow: 0px 15px 40px rgba(22, 8, 49, 0.1);
   display: inline-block;
 }
-.statusfont{
-  font-size:19px;
 
-}
 </style>
 <style lang="sass">
 .my-sticky-virtscroll-table
@@ -601,7 +573,7 @@ color: #4B4E68;
   .q-table__top,
   .q-table__bottom,
   thead tr:first-child th /* bg color is important for th; just specify one */
-    background-color: #D7FFFB
+    background-color: #00b4ff
 
   thead tr th
     position: sticky

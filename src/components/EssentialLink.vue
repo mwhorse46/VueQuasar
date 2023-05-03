@@ -2,7 +2,7 @@
   <q-item
     clickable
     tag="a"
-    href="#"
+    :href="link"
     class="menubar-list-custom"
   >
     <q-item-section
@@ -21,7 +21,6 @@
 
 <script>
 import { defineComponent } from 'vue'
-
 export default defineComponent({
   name: 'EssentialLink',
   props: {
@@ -29,17 +28,14 @@ export default defineComponent({
       type: String,
       required: true
     },
-
     caption: {
       type: String,
       default: ''
     },
-
     link: {
       type: String,
       default: '#'
     },
-
     icon: {
       type: String,
       default: ''
@@ -51,5 +47,4 @@ export default defineComponent({
 .iconsize{
   font-size: 16px;
 }
-
 </style>
